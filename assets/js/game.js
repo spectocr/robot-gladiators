@@ -16,7 +16,6 @@ var enemyAttack = 12;
 // fight function - ??can we explain this differently? why make it a var?
 var fight = function(enemyName) {
   // Alert players that they are starting the round
-  //window.alert("Welcome to Robot Gladiators!");
 // repeat and execute as long as the enemy-robot is alive
   while(playerHealth > 0 && enemyHealth > 0) {
   // ask player if they'd like to fight or run
@@ -67,11 +66,10 @@ if (promptFight === "skip" || promptFight === "SKIP") {
 
     // check player's health
     if (playerHealth <= 0) {
-      //window.alert(playerName + " has died!");
-    } else {
-      //window.alert(playerName + " still has " + playerHealth + " health left.");
-    }
-    // if player choses to skip
+      window.alert(playerName + " has died!");
+      window.alert("You have lost your robot in battle! Game Over!");
+      break;
+    } 
   }
   
   else {
@@ -81,8 +79,11 @@ if (promptFight === "skip" || promptFight === "SKIP") {
 };
 // how do i understand the difference between the while and for loops? why use one over the other?
 for(var i = 0; i < enemyNames.length; i++) {
-  var pickedEnemyName = enemyNames[i];
-  enemyHealth  = 50;
+  if (playerHealth > 0) {
+    window.alert("Welcome to Robt Gladiators!" + " Round " + (i +1));
+  }
+    var pickedEnemyName = enemyNames[i];
+    enemyHealth  = 50;
   // call fight function with enemy-robot
-    fight(enemyNames[i]);
+    fight(pickedEnemyName);
   }
